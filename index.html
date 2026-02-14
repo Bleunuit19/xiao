@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Mysnowy</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body class="flex justify-center items-center h-screen" style="
+      background-image: url(https://images.unsplash.com/photo-1555231955-348aa2312e19?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+      background-repeat: no-repeat;
+      background-size: cover;
+    ">
+  <div
+    class="bg-white border px-10 py-8 border-2 border-gray-300 shadow-lg shadow-blue-300 rounded-xl text-center animate__animated animate__backInDown m-8 w-80"
+    id="kartu">
+    <h1 class="text-3xl text-black-500 font-bold"> Happy Valentines Day </h1>
+    <h1 class="text-2xl text-pink-500 font-bold animate__animated animate__wobble animate_infinited">
+      Natasha Adrea
+    </h1>
+    <button
+      class="p-2 bg-red-600 text-black rounded mt-5 hover:bg-red-900 transition ease-in w-full animate__animated animate_delay-1s animate__tada"
+      onclick="UbahKartu()">
+      Click it!
+    </button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+  <script>
+    const duration = 15 * 1000,
+      animationEnd = Date.now() + duration,
+      defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    const interval = setInterval(function () {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+
+      // since particles fall down, start a bit higher than random
+      confetti(
+        Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+        })
+      );
+      confetti(
+        Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+        })
+      );
+    }, 250);
+    let kartu = document.getElementById("kartu")
+    function UbahKartu() {
+      kartu.innerHTML = `<h1 class="font semi-bold text-wrap animate__animated animate__zoomIn">
+     Halo sayang, di hari yang spesial ini, aku cuma mau bilang betapa berartinya 
+     kamu buat aku. Terima kasih udah jadi cahaya dalam hidupku, selalu ada buat aku, dan bikin setiap hari terasa istimewa. 
+     Semoga hari ini penuh cinta, tawa, dan kebahagiaan, sama kayak yang kamu bawa ke hidup aku setiap hari. 
+     I love you so much more than myself! Happy Valentine's Day!
+</h1>
+<h2 class="mt-3 animate__animated animate__fadeIn">
+    - Dari: MIK -
+</h2>
+<button 
+class="p-2 bg-slate-600 text-white rounded mt-5 hover:bg-slate-900 transition ease-in w-full animate__animated animate_delay-1s animate__tada" onclick="refresh()"
+> 
+CLose
+</button>
+`;
+
+
+    }
+    function refresh() {
+      location.reload();
+    }
+  </script>
+
+</body>
+
+</html>
